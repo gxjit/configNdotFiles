@@ -1,0 +1,28 @@
+{
+	"font_face": "Fira Code Medium",
+	"font_options":
+	[
+		"subpixel_antialias"
+	],
+	"font_size": 23,
+	"ignored_packages":
+	[
+		"ActionScript",
+		"AppleScript",
+		"ASP",
+		"Graphviz",
+		"LaTeX",
+		"Matlab",
+		"Objective-C",
+		"Pascal",
+		"R",
+		"Rails",
+		"RestructuredText",
+		"Textile",
+		"Vintage"
+	],
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": true
+}

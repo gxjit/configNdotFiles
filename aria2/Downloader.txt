@@ -1,0 +1,141 @@
+inFile = ; outDir = ; logFile = ; \
+aria2c \
+--input-file=$inFile --dir=$outDir --log=$logFile \
+--disk-cache=256M --log-level=info --split=2 \
+--max-concurrent-downloads=2 --max-connection-per-server=4 \
+--user-agent="Mozilla/5.0 (Windows NT 6.1; WOW64) Gecko/20100101 Firefox/15.0.1" \
+--auto-file-renaming=false --force-save=true  \
+--save-session=unfinished --piece-length=5M \
+--save-session-interval=60 --auto-save-interval=60 \
+--allow-overwrite=false --continue=true \
+--file-allocation=falloc
+
+--bt-max-open-files=25 --bt-max-peers=30 --enable-dht=true --enable-peer-exchange=true --max-overall-upload-limit=20K
+
+listen-port=50101-50109
+
+aria2c --conf-path=aria2.conf
+
+--external-downloader aria2c
+$ youtube-dl --external-downloader aria2c --external-downloader-args '-c -j 3 -x 3 -s 3 -k 1M' URL
+
+--summary-interval=60
+--on-download-complete=slp
+--keep-unfinished-download-result=false
+--on-download-error
+
+--select-file=<INDEX>
+--show-files
+--bt-force-encryption [true|false]
+(1K = 1024, 1M = 1024K)
+
+-i, --input-file=<FILE> / - stdin
+-d, --dir=<DIR> / -o, --out=<FILE>
+-l, --log=<LOG>
+
+--disk-cache=256M / K or M (1K = 1024, 1M = 1024K). Default: 16M
+
+--log-level=debug / info, notice, warn or error. Default: debug
+
+--split=2 / --min-split-size
+-j, --max-concurrent-downloads=2
+-x, --max-connection-per-server=4
+
+-U, --user-agent="Mozilla/5.0 (Windows NT 6.1; WOW64) Gecko/20100101 Firefox/15.0.1"
+
+--auto-file-renaming=false / skip already downloaded
+
+--force-save=true / save session files for completed downloads
+
+--save-session=<FILE> / Save error/unfinished downloads to FILE on exit.
+
+--save-session-interval=60
+
+--auto-save-interval=60 / Save a control file(*.aria2) every SEC seconds.
+
+--piece-length=5M Default: 1M
+
+-m, --max-tries=<N>
+--retry-wait=60
+--allow-overwrite=false
+--referer=<REFERER>
+
+--console-log-level=<LEVEL>¶
+-D, --daemon [true|false]
+
+-c, --continue [true|false]
+
+--file-allocation=<METHOD> prealloc / falloc
+--enable-mmap [true|false]
+--keep-unfinished-download-result [true|false]
+--max-mmap-limit=<SIZE> 9223372036854775807
+
+--stream-piece-selector=<SELECTOR> / geom inorder
+
+--on-download-complete=<COMMAND>
+python -c "from time import sleep; sleep(6)"
+--on-download-error=<COMMAND>
+
+--show-console-readout
+
+--stderr [true|false]
+--summary-interval=<SEC> Default: 60
+
+--max-overall-download-limit=<SPEED>¶
+--max-download-limit=<SPEED>
+
+
+Apple iPhone X
+Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1
+
+Apple iPhone 7
+Mozilla/5.0 (iPhone9,3; U; CPU iPhone OS 10_0_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/14A403 Safari/602.1
+
+Google Pixel 5
+Mozilla/5.0 (Linux; Android 11; Pixel 5 Build/RQ3A.210805.001.A1; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/92.0.4515.159 Mobile Safari/537.36
+
+Chrome OS-based laptop using Chrome browser (Chromebook)
+Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36
+
+Windows 10-based PC using Edge browser
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246
+
+Mac OS X-based computer using a Safari browser
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/601.3.9
+
+Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1
+
+Windows 7-based PC using a Chrome browser
+Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36
+
+Mozilla/5.0 (Windows NT 6.1; WOW64) Gecko/20100101 Firefox/15.0.1
+
+
+-k, --min-split-size=<SIZE>¶
+
+    aria2 does not split less than 2*SIZE byte range. For example, let's consider downloading 20MiB file. If SIZE is 10M, aria2 can split file into 2 range [0-10MiB) and [10MiB-20MiB) and download it using 2 sources(if --split >= 2, of course). If SIZE is 15M, since 2*15M > 20MiB, aria2 does not split file and download it using 1 source. You can append K or M (1K = 1024, 1M = 1024K). Possible Values: 1M -1024M Default: 20M
+
+
+aria2c -o myfile.zip "http://mirror1/file.zip" "http://mirror2/file.zip"
+
+
+ bt-force-encryption=true
+ bt-min-crypto-level=arc4
+ bt-require-crypto=true
+
+bt-stop-timeout=0
+ disable-ipv6=true
+  http-accept-gzip=true
+
+enable-dht=true
+# Enable IPv6 DHT functionality. If a private flag is set in a torrent, aria2 doesn't use DHT for that download even if true is given.
+enable-dht6=true
+# Set UDP listening port used by DHT(IPv4, IPv6) and UDP tracker. Default: 6881-6999
+dht-listen-port=50101-50109
+# Set host and port as an entry point to IPv4 DHT network.
+dht-entry-point=dht.transmissionbt.com:6881
+# Set host and port as an entry point to IPv6 DHT network.
+dht-entry-point6=dht.transmissionbt.com:6881
+# dht-entry-point="dht.transmissionbt.com:6881"
+
+bt-tracker=udp://tracker.coppersurfer.tk:6969/announce,udp://tracker.leechers-paradise.org:6969/announce,udp://tracker.opentrackr.org:1337/announce,udp://9.rarbg.to:2710/announce,udp://exodus.desync.com:6969/announce,udp://tracker.openbittorrent.com:80/announce,udp://tracker.tiny-vps.com:6969/announce,udp://retracker.lanta-net.ru:2710/announce,udp://tracker.torrent.eu.org:451/announce,udp://tracker.cyberia.is:6969/announce,udp://torrentclub.tech:6969/announce,udp://open.stealth.si:80/announce,udp://denis.stalker.upeer.me:6969/announce,udp://tracker.moeking.me:6969/announce,udp://open.demonii.si:1337/announce,udp://ipv4.tracker.harry.lu:80/announce,udp://tracker3.itzmx.com:6961/announce,udp://explodie.org:6969/announce,udp://valakas.rollo.dnsabr.com:2710/announce,udp://tracker.nyaa.uk:6969/announce,udp://tracker.iamhansen.xyz:2000/announce,udp://tracker.filepit.to:6969/announce,udp://tracker-udp.gbitt.info:80/announce,udp://retracker.netbynet.ru:2710/announce,udp://retracker.akado-ural.ru:80/announce,udp://opentor.org:2710/announce,udp://tracker.yoshi210.com:6969/announce,udp://tracker.filemail.com:6969/announce,udp://tracker.ds.is:6969/announce,udp://newtoncity.org:6969/announce,udp://bt2.archive.org:6969/announce,udp://bt1.archive.org:6969/announce,https://tracker.fastdownload.xyz:443/announce,https://opentracker.xyz:443/announce,https://opentracker.co:443/announce,http://tracker.bt4g.com:2095/announce,http://opentracker.xyz:80/announce,http://open.trackerlist.xyz:80/announce,http://h4.trakx.nibba.trade:80/announce,udp://xxxtor.com:2710/announce,udp://tracker.uw0.xyz:6969/announce,udp://tracker.tvunderground.org.ru:3218/announce,udp://tracker.nextrp.ru:6969/announce,udp://tracker.msm8916.com:6969/announce,udp://tracker.lelux.fi:6969/announce,udp://retracker.sevstar.net:2710/announce,udp://npserver.intranet.pw:4201/announce,https://tracker.nanoha.org:443/announce,https://tracker.hama3.net:443/announce,http://www.proxmox.com:6969/announce,http://tracker.tvunderground.org.ru:3218/announce,http://tracker.opentrackr.org:1337/announce,http://tracker.bz:80/announce,http://torrentclub.tech:6969/announce,http://t.nyaatracker.com:80/announce,http://retracker.sevstar.net:2710/announce,http://open.acgtracker.com:1096/announce,http://explodie.org:6969/announce,udp://tracker4.itzmx.com:2710/announce,udp://tracker2.itzmx.com:6961/announce,udp://tracker.swateam.org.uk:2710/announce,udp://tr.bangumi.moe:6969/announce,udp://qg.lorzl.gq:2710/announce,udp://chihaya.toss.li:9696/announce,https://tracker.vectahosting.eu:2053/announce,https://tracker.lelux.fi:443/announce,https://tracker.gbitt.info:443/announce,https://opentracker.acgnx.se:443/announce,http://www.loushao.net:8080/announce,http://vps02.net.orel.ru:80/announce,http://tracker4.itzmx.com:2710/announce,http://tracker3.itzmx.com:6961/announce,http://tracker2.itzmx.com:6961/announce,http://tracker1.itzmx.com:8080/announce,http://tracker01.loveapp.com:6789/announce,http://tracker.yoshi210.com:6969/announce,http://tracker.torrentyorg.pl:80/announce,http://tracker.lelux.fi:80/announce,http://tracker.gbitt.info:80/announce,http://tracker.frozen-layer.net:6969/announce,http://sukebei.tracker.wf:8888/announce,http://pow7.com:80/announce,http://opentracker.acgnx.se:80/announce,http://open.acgnxtracker.com:80/announce,http://newtoncity.org:6969/announce,http://mail2.zelenaya.net:80/announce,http://bt-tracker.gamexp.ru:2710/announce,http://acg.rip:6699/announce

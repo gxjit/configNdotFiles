@@ -1,0 +1,31 @@
+{
+  "selector": "source.python",
+  "file_patterns": ["*.py"],
+  "shell_cmd": "echo \"please select a sub command\"",
+  "working_dir": "$file_path",
+  //   "env": {
+  //     "PATH": "$HOME/.local/bin:$PATH"
+  // },
+  "variants": [
+    {
+      "name": "Format & Lint",
+      "shell_cmd": "black \"$file\" && flake8 --ignore=E731 --max-line-length=90 \"$file\""
+    },
+    {
+      "name": "Format(Black)",
+      "shell_cmd": "black \"$file\""
+    },
+    {
+      "name": "Lint(Flake8)",
+      "shell_cmd": "flake8 --ignore=E731 --max-line-length=88 \"$file\""
+    },
+    {
+      "name": "Sort Imports(isort)",
+      "shell_cmd": "isort \"$file\""
+    },
+    {
+      "name": "Lint(pylint)",
+      "shell_cmd": "pylint \"$file\""
+    },
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "editor.fontLigatures": true,
+  "editor.fontSize": 22,
+  "editor.fontFamily": "'Fira Code Medium','Droid Sans Mono', 'monospace'",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "editor.formatOnSave": true,
+  // "editor.letterSpacing": 0.5,
+  // "editor.lineHeight": 40,
+  "editor.cursorWidth": 3,
+  "editor.cursorBlinking": "smooth",
+  "editor.renderWhitespace": "selection",
+  "editor.fastScrollSensitivity": 5,
+  "workbench.enableExperiments": false,
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  // "workbench.colorTheme": "One Dark Pro",
+  "terminal.explorerKind": "external",
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "files.exclude": {
+    "**/node_modules/**/*.*": true,
+    "**/.git/**/*.*": true,
+    "**/.next/**/*.*": true,
+    "**/.npm/**/*.*": true,
+    "**/*.min.js": true,
+    "dist/**": true,
+    "build/**": true,
+    "**/vendor/**": true
+  },
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.endOfLine": "lf",
+  // "eslint.run": "onSave",
+  // "eslint.autoFixOnSave": true,
+  // "eslint.options": { "configFile": "/home/singh/Configs/eslint.config.js" },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // "npm.enableScriptExplorer": true,
+  // "npm.scriptExplorerAction": "run",
+  "emmet.includeLanguages": {
+    // "javascript": "javascriptreact",
+    // "babel": "javascript",
+    "pug": "jade"
+  },
+  "files.associations": {
+    "*.jsx": "javascriptreact"
+  },
+  // "editor.glyphMargin": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.mouseWheelScrollSensitivity": 2.5,
+  "editor.mouseWheelZoom": false,
+  "python.linting.enabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": ["--ignore=E731", "--max-line-length=90"],
+  // extend-ignore = E203
+  // "python.linting.flake8CategorySeverity.F": "Error",
+  "python.formatting.provider": "black",
+  // "python.formatting.blackArgs": ["--line-length", "88"],
+  "[python]": {
+    "editor.tabSize": 4
+  },
+  "python.venvFolders": [
+    "%USERPROFILE%\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\",
+    "~/.cache/pypoetry/virtualenvs"
+  ],
+  "telemetry.telemetryLevel": "error",
+  "git.path": "D:\\PortableApps\\cmder\\vendor\\git-for-windows\\bin\\git.exe",
+  "python.analysis.typeCheckingMode": "basic"
+}

@@ -1,0 +1,10 @@
+{
+        "installed_packages":
+        [
+                "Package Control",
+                "Babel",
+                "PowerShell",
+                "Dockerfile Syntax Highlighting",
+                "REG",
+        ],
+}
